@@ -1,0 +1,14 @@
+{
+  "id": "battester",
+  "name": "BatTester",
+  "description": "Battery testing and monitoring system with discharge capacity testing, real-time voltage/current graphs, and test history tracking",
+  "type": "web",
+  "icon": "🔋",
+  "category": "tools",
+  "web": {
+    "enabled": true,
+    "port": 8090,
+    "command": ["./start.sh"]
+  },
+  "tags": ["battery", "testing", "hardware", "monitoring", "electronics"]
+}

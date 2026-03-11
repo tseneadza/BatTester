@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BatTester - Battery Testing Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔋 BatTester</h1>
+            <p class="subtitle">Battery Testing & Monitoring</p>
+        </header>
+
+        <section class="create-test">
+            <h2>New Test</h2>
+            <form id="create-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="test-name">Test Name</label>
+                        <input type="text" id="test-name" value="Battery Test" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="chemistry">Chemistry</label>
+                        <select id="chemistry">
+                            <option value="li-ion">Li-Ion</option>
+                            <option value="lipo">LiPo</option>
+                            <option value="lifepo4">LiFePO4</option>
+                            <option value="nimh">NiMH</option>
+                            <option value="lead-acid">Lead Acid</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="voltage">Nominal Voltage (V)</label>
+                        <input type="number" id="voltage" value="3.7" step="0.1" min="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="capacity">Capacity (mAh)</label>
+                        <input type="number" id="capacity" value="2000" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="cells">Cell Count</label>
+                        <input type="number" id="cells" value="1" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="discharge-rate">Discharge Rate (C)</label>
+                        <input type="number" id="discharge-rate" value="0.5" step="0.1" min="0.1">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Test</button>
+            </form>
+        </section>
+
+        <section class="active-test" id="active-test" style="display: none;">
+            <h2>Active Test: <span id="active-test-name"></span></h2>
+            <div class="metrics">
+                <div class="metric">
+                    <span class="metric-value" id="metric-voltage">--</span>
+                    <span class="metric-label">Voltage (V)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="metric-current">--</span>
+                    <span class="metric-label">Current (mA)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="metric-temp">--</span>
+                    <span class="metric-label">Temp (°C)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="metric-capacity">--</span>
+                    <span class="metric-label">Capacity (mAh)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="metric-energy">--</span>
+                    <span class="metric-label">Energy (mWh)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value" id="metric-duration">--</span>
+                    <span class="metric-label">Duration</span>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="voltage-chart"></canvas>
+            </div>
+            <div class="controls">
+                <button id="start-btn" class="btn btn-success">Start</button>
+                <button id="stop-btn" class="btn btn-danger" disabled>Stop</button>
+            </div>
+        </section>
+
+        <section class="test-history">
+            <h2>Test History</h2>
+            <div id="test-list" class="test-list">
+                <p class="empty-state">No tests yet. Create one above.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
