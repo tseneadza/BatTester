@@ -3,12 +3,27 @@
   "name": "BatTester",
   "description": "Battery testing and monitoring system with discharge capacity testing, real-time voltage/current graphs, and test history tracking",
   "type": "web",
-  "icon": "🔋",
+  "icon": "\ud83d\udd0b",
   "category": "tools",
   "web": {
     "enabled": true,
     "port": 8090,
-    "command": ["./start.sh"]
+    "command": [
+      "./start.sh"
+    ]
   },
-  "tags": ["battery", "testing", "hardware", "monitoring", "electronics"]
+  "tags": [
+    "battery",
+    "testing",
+    "hardware",
+    "monitoring",
+    "electronics"
+  ],
+  "scripts": [
+    {
+      "name": "start",
+      "path": "start.sh",
+      "description": "Script: start.sh"
+    }
+  ]
 }
